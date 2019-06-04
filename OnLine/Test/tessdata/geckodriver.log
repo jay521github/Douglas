@@ -1,0 +1,10 @@
+1542621756804	geckodriver	INFO	Listening on 127.0.0.1:65239
+1542621759791	mozprofile::profile	INFO	Using profile path C:\Users\ADMINI~1\AppData\Local\Temp\rust_mozprofile.HpsEhZG3cjmC
+1542621759802	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe
+1542621759941	geckodriver::marionette	INFO	Connecting to Marionette on localhost:65298
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs
+1542675958781	geckodriver	INFO	Listening on 127.0.0.1:56536
+1542675961786	mozprofile::profile	INFO	Using profile path C:\Users\ADMINI~1\AppData\Local\Temp\rust_mozprofile.RSInk9RpupeS
+1542675961791	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe
+1542675961952	geckodriver::marionette	INFO	Connecting to Marionette on localhost:56593
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs
