@@ -2,7 +2,6 @@ from selenium import webdriver
 import unittest
 class Qa(unittest.TestCase):
     def setUp(self):
-        self.driver.implicitly_wait(30)
         self.driver = webdriver.Chrome()
         self.driver.get('http://tms.beiwaiguoji.com/login/login')
         self.driver.maximize_window()
@@ -10,6 +9,7 @@ class Qa(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@name='password']").send_keys('bwgj')
         self.driver.find_element_by_name('validNumber').send_keys(6666)
         self.driver.find_element_by_xpath("//a[@class='landbtn']").click()
+        self.driver.implicitly_wait(30)
     def tearDown(self):
         self.driver.quit()
     def test(self):
