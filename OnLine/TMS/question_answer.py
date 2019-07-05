@@ -1,11 +1,8 @@
+#-*- coding:utf-8 -*-
 from selenium import webdriver
 import smtplib  #加载smtplib模块
 from email.mime.text import MIMEText
 from email.utils import parseaddr, formataddr
-my_sender='jay521mm@126.com' #发件人邮箱账号，为了后面易于维护，所以写成了变量
-my_user='sundong@beiwaiguoji.com','zhangxi@beiwaiguoji.com' #收件人邮箱账号，为了后面易于维护，所以写成了变量
-server=smtplib.SMTP("smtp.126.com",25)  #发件人邮箱中的SMTP服务器，端口是25
-server.login(my_sender,"sd19841108")    #括号中对应的是发件人邮箱账号、邮箱密码
 driver = webdriver.Chrome()
 driver.get('http://tms.beiwaiguoji.com/login/login')
 driver.maximize_window()
@@ -33,11 +30,15 @@ if Page_data in Page_text:
 else:
     with open(file_path,'w')as fp:
         fp.write(Page_text)
+        my_sender = 'jay521mm@126.com'  # 发件人邮箱账号，为了后面易于维护，所以写成了变量
+        my_user = ['sundong@beiwaiguoji.com', 'zhangxi@beiwaiguoji.com' ] # 收件人邮箱账号，为了后面易于维护，所以写成了变量
+        server = smtplib.SMTP("smtp.126.com", 25)  # 发件人邮箱中的SMTP服务器，端口是25
+        server.login(my_sender, "sd19841108")  # 括号中对应的是发件人邮箱账号、邮箱密码
         msg = MIMEText('TMS有问题待处理', 'plain', 'utf-8')
         msg['From'] = formataddr(["监控者", my_sender])  # 括号里的对应发件人邮箱昵称、发件人邮箱账号
-        msg['To'] = formataddr(["解决人", my_user])  # 括号里的对应收件人邮箱昵称、收件人邮箱账号
+        msg['To'] = msg['To'] = ','.join(my_user) # 括号里的对应收件人邮箱昵称、收件人邮箱账号
         msg['Subject'] = "TMS问题监控"  # 邮件的主题，也可以说是标题
-        server.sendmail(my_sender, [my_user, ], msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
+        server.sendmail(my_sender, my_user, msg.as_string())  # 括号中对应的是发件人邮箱账号、收件人邮箱账号、发送邮件
         server.quit()
         print('TMS邮件提醒已经发送')
         # att1 = MIMEText(open(file_path, 'rb').read(), 'base64', 'utf-8')
