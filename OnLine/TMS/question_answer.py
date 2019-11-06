@@ -14,7 +14,7 @@ driver.implicitly_wait(30)
 
 js = "var q=document.body.scrollTop=500"
 driver.execute_script(js)
-driver.find_element_by_xpath('//*[@id="sub_0"]/li[22]/a/span').click()
+driver.find_element_by_xpath('//*[@id="sub_0"]/li[23]/a/span').click()
 js = "var q=document.body.scrollTop=0"
 driver.execute_script(js)
 driver.find_element_by_xpath('//*[@id="queryForm"]/div[2]/div/div[2]/button').click()
